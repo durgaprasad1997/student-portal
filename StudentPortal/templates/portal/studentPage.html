@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title_text %}
+    student list
+{% endblock title_text %}
+
+{% block content %}
+
+{% for student in contacts %}
+<div class="w3-container">
+  <h2>{{student.name}}</h2>
+
+  <div class="w3-card-4" style="width:70%">
+    <header class="w3-container w3-light-grey">
+
+    </header>
+    <div class="w3-container">
+
+      <hr>
+            <img src={{ student.profile_picture }} alt="Smiley face" height="42" width="42">
+         <table class="table table-bordered" style="background-color:pink">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ student.name }}</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>{{ student.gender }}</td>
+                </tr>
+                <tr>
+                    <th>College</th>
+                    <td>{{ student.college }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ student.city }}</td>
+                </tr>
+            </table>
+
+        <p id="demo"></p>
+    </div>
+    <button class="w3-button w3-block w3-dark-grey" >details</button>
+
+  </div>
+</div>
+
+{% endfor %}
+
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}.
+        </span>
+
+        {% if contacts.has_next %}
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+            <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

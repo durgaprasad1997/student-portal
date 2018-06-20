@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title_text %}
+    student list
+{% endblock title_text %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% for student in student_list %}
+        <div>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ student.name }}</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>{{ student.gender }}</td>
+                </tr>
+                <tr>
+                    <th>College</th>
+                    <td>{{ student.college }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ student.city }}</td>
+                </tr>
+            </table>
+        </div>
+        <hr/>
+    {% endfor %}
+{% endblock %}
